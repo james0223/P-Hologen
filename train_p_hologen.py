@@ -2,7 +2,7 @@ import torch
 from tqdm import tqdm
 from modules.p_hologen import P_Hologen
 import torchvision.transforms
-from torch.utils.data import DataLoader, Subset
+from torch.utils.data import DataLoader
 from pathlib import Path
 import math
 
@@ -117,15 +117,6 @@ def train_p_hologen(opts):
     else:
         raise AssertionError(
             "Invalid dataset name: {}, available: MNIST, Celeba_HQ, AFHQ".format(dataset_name))
-
-    num_train_samples = len(trainset)
-    num_val_samples = len(valset)
-
-    train_indices = torch.randperm(num_train_samples)[:int(0.001 * num_train_samples)]
-    val_indices = torch.randperm(num_val_samples)[:int(0.001 * num_val_samples)]
-
-    trainset = Subset(trainset, train_indices)
-    valset = Subset(valset, val_indices)
 
     train_dataloader = DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=2)
     val_dataloader = DataLoader(valset, batch_size=batch_size, shuffle=True, num_workers=2)
