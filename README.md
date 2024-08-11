@@ -2,7 +2,7 @@
 
 This is the codebase for the paper P-Hologen: An End-to-end Generative Framework for Phase-Only Holograms.
 
-
+![Overview](README.assets/Representative_image.png)
 
 ## 0. Environment setup
 
